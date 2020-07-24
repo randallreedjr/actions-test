@@ -1,0 +1,19 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Pull Request Number
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  print-pr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print pull request number
+        run: |
+          echo ${{ github.event.action }}
+          echo ${{ github.event.pull_request.merged }}
+          echo ${{ github.event.pull_request.number }}
