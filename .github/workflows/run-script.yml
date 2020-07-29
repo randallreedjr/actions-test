@@ -1,0 +1,14 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Run script
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on: push
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run script to print foo
+        run: ./scripts/test.sh
