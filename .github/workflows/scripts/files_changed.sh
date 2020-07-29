@@ -1,1 +1,1 @@
-echo "::set-output name=FILES_CHANGED::$(git diff --name-only `git merge-base origin/${{ github.base_ref }} origin/${{ github.head_ref }}`..origin/${{ github.head_ref }} "*/models/*.sql" | awk -F '/' '{ print $NF }' | sed "s/\.sql$/${children}/g" | sed 's/^/+/g' | tr '\n' ' ')"
+echo "::set-output name=FILES_CHANGED::$(git diff --name-only `git merge-base origin/${{ github.base_ref }} origin/${{ github.head_ref }}`..origin/${{ github.head_ref }} "**/*/*.sh" | awk -F '/' '{ print $NF }' | sed "s/\.sh$/${children}/g" | sed 's/^/+/g' | tr '\n' ' ')"
