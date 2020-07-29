@@ -13,7 +13,6 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Run script to print foo
-        shell: bash
         run: |
           sh ./.github/workflows/scripts/test.sh
           sh ./.github/workflows/scripts/files_changed.sh
