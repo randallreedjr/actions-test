@@ -15,5 +15,4 @@ jobs:
       - name: Run script to print foo
         shell: bash
         run: |
-          chmod +x ./.github/workflows/scripts/test.sh
-          ./.github/workflows/scripts/test.sh
+          sh ./.github/workflows/scripts/test.sh
