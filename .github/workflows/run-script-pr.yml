@@ -12,6 +12,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - name: Run script to print foo
+      - name: Run script to print files changed
         run: |
           sh ./.github/workflows/scripts/files_changed.sh
