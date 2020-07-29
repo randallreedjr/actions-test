@@ -16,3 +16,4 @@ jobs:
         shell: bash
         run: |
           sh ./.github/workflows/scripts/test.sh
+          sh ./.github/workflows/scripts/files_changed.sh
