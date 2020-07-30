@@ -37,18 +37,18 @@ jobs:
           echo "::set-output name=FILES_CHANGED::$(sh ./.github/workflows/scripts/changed_files_foo_2.sh)"
       - name: Verify output
         id: verify_output
-        run: echo ${{ steps.changed_files.FILES_CHANGED }}
+        run: echo ${{ steps.changed_files.outputs.FILES_CHANGED }}
       - name: Verify output testing
         id: verify_output_testing
-        run: echo ${{ steps.changed_files_testing.FILES_CHANGED }}
+        run: echo ${{ steps.changed_files_testing.outputs.FILES_CHANGED }}
       - name: Verify output new
         id: verify_output_new
-        run: echo ${{ steps.changed_files_new.FILES_CHANGED }}
+        run: echo ${{ steps.changed_files_new.outputs.FILES_CHANGED }}
       - name: Verify output foo
         id: verify_output_foo
-        run: echo ${{ steps.changed_files_foo.FILES_CHANGED }}
+        run: echo ${{ steps.changed_files_foo.outputs.FILES_CHANGED }}
       - name: Verify output foo 2
         id: verify_output_foo_2
         run: |
           echo steps.changed_files_foo_2.FILES_CHANGED
-          echo ${{steps.changed_files_foo_2.FILES_CHANGED}}
+          echo ${{steps.changed_files_foo_2.outputs.FILES_CHANGED}}
