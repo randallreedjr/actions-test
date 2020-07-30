@@ -1,1 +1,1 @@
-echo foo
+return foo
