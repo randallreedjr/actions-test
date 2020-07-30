@@ -1,0 +1,35 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Run script on pull request
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on: pull_request
+
+jobs:
+  run-script-pr:
+    name: Run script on pull request
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Get files changed using git diff to compare pr branch to master for dbt run
+        id: changed_files
+        run: sh ./.github/workflows/scripts/changed_files.sh
+        env:
+          GITHUB_BASE_REF: ${{ github.base_ref }}
+          GITHUB_HEAD_REF: ${{ github.head_ref }}
+      - name: Get files changed using git diff to compare pr branch to master for dbt test
+        id: changed_files_testing
+        run: sh ./.github/workflows/scripts/changed_files_testing.sh
+      - name: Get files changed using git diff to compare pr branch to master for dbt run foo
+        id: changed_files_foo
+        run: sh ./.github/workflows/scripts/changed_files_foo.sh
+      - name: Verify output
+        id: verify_output
+        run: echo ${{ steps.changed_files.outputs.FILES_CHANGED }}
+      - name: Verify output testing
+        id: verify_output_testing
+        run: echo ${{ steps.changed_files_testing.outputs.FILES_CHANGED }}
+      - name: Verify output foo
+        id: verify_output_foo
+        run: echo ${{ steps.changed_files_foo.outputs.FILES_CHANGED }}
