@@ -31,9 +31,6 @@ jobs:
         id: changed_files_foo
         run: |
           sh ./.github/workflows/scripts/changed_files_foo.sh
-          echo $(sh ./.github/workflows/scripts/changed_files_foo.sh)
-          echo "$(sh ./.github/workflows/scripts/changed_files_foo.sh)"
-          echo "::set-output name=FILES_CHANGED::$(sh ./.github/workflows/scripts/changed_files_foo.sh)"
         env:
           GITHUB_BASE_REF: ${{ github.base_ref }}
           GITHUB_HEAD_REF: ${{ github.head_ref }}
