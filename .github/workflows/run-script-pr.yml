@@ -31,9 +31,10 @@ jobs:
         id: changed_files_foo
         run: |
           sh ./.github/workflows/scripts/changed_files_foo.sh
-        env:
-          GITHUB_BASE_REF: ${{ github.base_ref }}
-          GITHUB_HEAD_REF: ${{ github.head_ref }}
+      - name: Get files changed using git diff to compare pr branch to master for dbt run foo 2
+        id: changed_files_foo_2
+        run: |
+          echo "::set-output name=FILES_CHANGED::$(sh ./.github/workflows/scripts/changed_files_foo_2.sh)"
       - name: Verify output
         id: verify_output
         run: echo ${{ steps.changed_files.FILES_CHANGED }}
@@ -46,3 +47,8 @@ jobs:
       - name: Verify output foo
         id: verify_output_foo
         run: echo ${{ steps.changed_files_foo.FILES_CHANGED }}
+      - name: Verify output foo 2
+        id: verify_output_foo_2
+        run: |
+          echo steps.changed_files_foo_2.FILES_CHANGED
+          echo ${{steps.changed_files_foo_2.FILES_CHANGED}}
