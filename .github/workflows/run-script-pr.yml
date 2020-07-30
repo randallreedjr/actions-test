@@ -12,9 +12,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - name: Run script to print files changed
-        run: |
-          sh ./.github/workflows/scripts/files_changed.sh
+      - name: Get files changed using git diff to compare pr branch to master for dbt run
+        id: changed_files
+        run: sh ./.github/workflows/scripts/changed_files.sh
+        env:
+          GITHUB_BASE_REF: ${{ github.base_ref }}
+          GITHUB_HEAD_REF: ${{ github.head_ref }}
+      - name: Get files changed using git diff to compare pr branch to master for dbt test
+        id: changed_files_testing
+        run: sh ./.github/workflows/scripts/changed_files_testing.sh
         env:
           GITHUB_BASE_REF: ${{ github.base_ref }}
           GITHUB_HEAD_REF: ${{ github.head_ref }}
