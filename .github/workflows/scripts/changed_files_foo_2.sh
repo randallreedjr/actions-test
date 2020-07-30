@@ -1,1 +1,1 @@
-return foo
+git diff --name-only
