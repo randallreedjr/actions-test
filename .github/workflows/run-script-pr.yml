@@ -15,3 +15,6 @@ jobs:
       - name: Run script to print files changed
         run: |
           sh ./.github/workflows/scripts/files_changed.sh
+        env:
+          GITHUB_BASE_REF: ${{ github.base_ref }}
+          GITHUB_HEAD_REF: ${{ github.head_ref }}
